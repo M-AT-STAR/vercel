@@ -13,7 +13,9 @@ echo -e "${C_PURPLE}╔═══════════════════
 echo -e "${C_PURPLE}║${C_RESET} ${C_CYAN}      M@☆ FRAMEWORK INSTALLER - ENTERPRISE EDITION      ${C_RESET} ${C_PURPLE}║${C_RESET}"
 echo -e "${C_PURPLE}╚════════════════════════════════════════════════════════════╝${C_RESET}"
 echo ""
-read -p "🔑 Enter Install PIN: " user_pin
+
+# THE FIX: Force read to pull from the active terminal, not the curl pipe
+read -p "🔑 Enter Install PIN: " user_pin </dev/tty
 
 # Verify the PIN
 if [ "$user_pin" != "VERCEL" ]; then
@@ -44,4 +46,3 @@ echo -e "${C_PURPLE}============================================================
 echo -e "${C_CYAN}To launch the Deployer from anywhere, simply type:${C_RESET}"
 echo -e "👉 ${C_YELLOW}Mvercel${C_RESET}"
 echo -e "${C_PURPLE}==============================================================${C_RESET}"
-
