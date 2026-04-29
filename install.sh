@@ -25,7 +25,7 @@ fi
 
 echo -e "\n${C_YELLOW}[*] PIN Accepted. Downloading Core Architecture...${C_RESET}"
 # Download the encrypted GPG file from your GitHub
-curl -sL https://raw.githubusercontent.com/M-AT-STAR/vercel/main/MastersVercelDeploy.tspy -o /tmp/Mvercel.tspy
+curl -sL https://raw.githubusercontent.com/M-AT-STAR/vercel/main/Mvercel.tspy -o /tmp/Mvercel.tspy
 
 echo -e "${C_YELLOW}[*] Decrypting and Injecting Matrix...${C_RESET}"
 # [V76.26 FIX] Use loopback mode to bypass hidden VPS password prompts
