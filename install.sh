@@ -14,7 +14,7 @@ echo -e "${C_PURPLE}║${C_RESET} ${C_CYAN}      M@☆ FRAMEWORK INSTALLER - ENT
 echo -e "${C_PURPLE}╚════════════════════════════════════════════════════════════╝${C_RESET}"
 echo ""
 
-# THE FIX: Force read to pull from the active terminal, not the curl pipe
+# Bypass the pipe to read directly from the user's terminal
 read -p "🔑 Enter Install PIN: " user_pin </dev/tty
 
 # Verify the PIN
@@ -28,8 +28,8 @@ echo -e "\n${C_YELLOW}[*] PIN Accepted. Downloading Core Architecture...${C_RESE
 curl -sL https://raw.githubusercontent.com/M-AT-STAR/vercel/main/MastersVercelDeploy.tspy -o /tmp/Mvercel.tspy
 
 echo -e "${C_YELLOW}[*] Decrypting and Injecting Matrix...${C_RESET}"
-# Decrypt the file directly into the global /usr/local/bin directory
-gpg --quiet --batch --yes --passphrase "$user_pin" --decrypt /tmp/Mvercel.tspy > /usr/local/bin/Mvercel 2>/dev/null
+# [V76.26 FIX] Use loopback mode to bypass hidden VPS password prompts
+gpg --quiet --batch --yes --pinentry-mode loopback --passphrase "$user_pin" -d /tmp/Mvercel.tspy > /usr/local/bin/Mvercel 2>/dev/null
 
 if [ $? -ne 0 ]; then
     echo -e "${C_RED}[!] Decryption failed. Corrupted file or invalid pipeline.${C_RESET}"
