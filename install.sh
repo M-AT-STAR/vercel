@@ -14,7 +14,7 @@ echo -e "${C_PURPLE}║${C_RESET} ${C_CYAN}      M@☆ FRAMEWORK INSTALLER - ENT
 echo -e "${C_PURPLE}╚════════════════════════════════════════════════════════════╝${C_RESET}"
 echo ""
 
-# Bypass the pipe to read directly from the user's terminal
+# Read PIN directly from terminal (Pipe Trap Fix)
 read -p "🔑 Enter Install PIN: " user_pin </dev/tty
 
 # Verify the PIN
@@ -24,12 +24,12 @@ if [ "$user_pin" != "VERCEL" ]; then
 fi
 
 echo -e "\n${C_YELLOW}[*] PIN Accepted. Downloading Core Architecture...${C_RESET}"
-# Download the encrypted GPG file from your GitHub
+# Updated URL to match your new Mvercel.tspy file name
 curl -sL https://raw.githubusercontent.com/M-AT-STAR/vercel/main/Mvercel.tspy -o /tmp/Mvercel.tspy
 
 echo -e "${C_YELLOW}[*] Decrypting and Injecting Matrix...${C_RESET}"
-# [V76.26 FIX] Use loopback mode to bypass hidden VPS password prompts
-gpg --quiet --batch --yes --pinentry-mode loopback --passphrase "$user_pin" -d /tmp/Mvercel.tspy > /usr/local/bin/Mvercel 2>/dev/null
+# [THE FORGE FIX]: Reverse Base64 Cloaking -> Decrypt Loopback GPG -> Inject to System
+base64 -d /tmp/Mvercel.tspy | gpg --quiet --batch --yes --pinentry-mode loopback --passphrase "$user_pin" -d > /usr/local/bin/Mvercel 2>/dev/null
 
 if [ $? -ne 0 ]; then
     echo -e "${C_RED}[!] Decryption failed. Corrupted file or invalid pipeline.${C_RESET}"
