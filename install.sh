@@ -10,7 +10,7 @@ C_RESET='\033[0m'
 
 clear
 echo -e "${C_PURPLE}╔════════════════════════════════════════════════════════════╗${C_RESET}"
-echo -e "${C_PURPLE}║${C_RESET} ${C_CYAN}      M@☆ FRAMEWORK INSTALLER - ENTERPRISE EDITION      ${C_RESET} ${C_PURPLE}║${C_RESET}"
+echo -e "${C_PURPLE}║${C_RESET} ${C_CYAN}      M@☆ FRAMEWORK INSTALLER - 💙 EDITION      ${C_RESET} ${C_PURPLE}║${C_RESET}"
 echo -e "${C_PURPLE}╚════════════════════════════════════════════════════════════╝${C_RESET}"
 echo ""
 
